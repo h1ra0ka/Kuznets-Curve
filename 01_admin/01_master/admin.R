@@ -8,7 +8,7 @@ main <- function(){
 
 source("01_admin/initialize/admin.R")
        
-       here::here('04_analyze', object_name, 'code', 'analyze.R'))
+       here::here('04_analyze', object_name, 'code', 'analyze.R')
 
 preamble <- function(){
   lets('set', 'preamble')
