@@ -23,10 +23,9 @@ bind_dataframe <- function(gdp_japan, gdp_us){
 }
 
 save_data <- function(gdp_tidy){
-  saveRDS(gdp_tidy, file = here::here("03_build", "gdp_tidy", "output", "gdp_tidy.obj"))
+  saveRDS(gdp_tidy, file = here::here("03_build", "gdp_tidy", "output", "gdp_tidy.rds"))
 }
 
 main()
 
-
-#test <- readRDS(here::here("03_build", "gdp_tidy", "output", "gdp_tidy.obj"))
+#test <- readRDS(here::here("03_build", "gdp_tidy", "output", "gdp_tidy.rds"))
