@@ -7,7 +7,7 @@ main <- function(){
 
 read_japan <- function(){
   gdp_japan <- readr::read_csv(here::here("02_raw", "gdp", "data", "Japan.csv"))
-  gdp_japan$country <- c(rep("Japan", nrow(gdp_japan)))
+  gdp_japan$country <- c(rep("JPN", nrow(gdp_japan)))
   return(gdp_japan)
 }
 
