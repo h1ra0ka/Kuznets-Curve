@@ -2,6 +2,7 @@ main <- function(){
   read_master()
   summarize(master)
   make_table(both_summary, JPN_summary, USA_summary)
+  make_image(table)
 }
 
 read_master <- function(){
@@ -59,6 +60,9 @@ make_table <- function(both_summary, JPN_summary, USA_summary){
   rownames(table) <- c("Both", "JPN", "USA")
   
   return(table)
+}
+
+make_image <- function(table){
   #表の出力で悩んでいる　kableの利用がうまくいかない　bothの欄は不要か
 }
 
