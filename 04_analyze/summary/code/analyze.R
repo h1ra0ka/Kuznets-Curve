@@ -1,8 +1,6 @@
 main <- function(){
-  read_master()
-  summarize(master)
-  make_table(both_summary, JPN_summary, USA_summary)
-  make_image(table)
+  master <- read_master()
+  make_table(master)
 }
 
 read_master <- function(){
@@ -10,7 +8,7 @@ read_master <- function(){
   return(master)
 }
 
-summarize <- function(master){
+make_table <- function(master){
   both_summary <- dplyr::select(master, gini) %>%
     summary() %>%
     as.vector()
@@ -20,11 +18,7 @@ summarize <- function(master){
   USA_summary <- dplyr::filter(master, country == "USA") %>%
     dplyr::select(gini) %>%
     summary()
-    
-  return(both_summary, JPN_summary, USA_summary)
-}
 
-make_table <- function(both_summary, JPN_summary, USA_summary){
   both_numbers <- strsplit(both_summary, ":")
   both_min <- both_numbers[[1]]
   both_1Q <- both_numbers[[2]]
@@ -56,14 +50,10 @@ make_table <- function(both_summary, JPN_summary, USA_summary){
   USA_numbers2 <- c(USA_min[[2]], USA_1Q[[2]], USA_median[[2]], USA_mean[[2]], USA_3Q[[2]], USA_max[[2]])
   
   table <- as.data.frame(t(data.frame(both_numbers2, JPN_numbers2, USA_numbers2)))
-  colnames(table) <- c("min", "1Q", "median", "mean", "3Q", "max")
+  colnames(table) <- c("min", "firstQ", "median", "mean", "thirdQ", "max")
   rownames(table) <- c("Both", "JPN", "USA")
   
-  return(table)
-}
-
-make_image <- function(table){
-  #表の出力で悩んでいる　kableの利用がうまくいかない　bothの欄は不要か
+  saveRDS(table, file = here::here("04_analyze", "summary", "output", "table.rds"))
 }
 
 main()

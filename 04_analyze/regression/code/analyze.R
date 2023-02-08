@@ -24,5 +24,7 @@ read_USA <- function(master_data){
 }
 
 JPN_regression <- function(JPN_data){
-  
+  JPN_res <- lm(JPN_data$gini ~ JPN_data$year)
 }
+library("estimatr")
+install.packages("estimatr")
